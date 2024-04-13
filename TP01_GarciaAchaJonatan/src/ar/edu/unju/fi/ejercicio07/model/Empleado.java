@@ -5,5 +5,5 @@ public class Empleado {
 	private int legajo;
 	private float salario;
 	final double SALARIO_MINIMO = 210000.00;
-	
+	 
 }
