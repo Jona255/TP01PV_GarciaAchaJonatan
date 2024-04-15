@@ -20,7 +20,7 @@ public class Main {
 		System.out.println("--------------------------------");
 		System.out.println("La sumatoria de "+num+" es: "+ ce.calculadoraSumatoria(ce.getN()));
 		System.out.println("La productoria de "+num+" es: "+ ce.calculadoraProductoria(ce.getN()));
-		
+		sc.close();
 	}	
 
 }
