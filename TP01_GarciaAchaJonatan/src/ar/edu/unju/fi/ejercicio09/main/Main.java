@@ -1,6 +1,4 @@
 package ar.edu.unju.fi.ejercicio09.main;
-
-import java.util.Iterator;
 import java.util.Scanner;
 
 import ar.edu.unju.fi.ejercicio09.model.Producto;
@@ -13,16 +11,6 @@ public class Main {
 		int num;
 		
 		Producto[] productos = new Producto[3];
-
-		Producto producto1 = new Producto();
-
-		producto1.setNombre("pan");
-		producto1.setCodigo(123);
-		producto1.setPrecio(500);
-
-		System.out.println("el precio SIN descuento del producto es: " + producto1.getPrecio());
-		System.out.println("el PORCENTAJE de descuento es: " + producto1.getDescuento());
-		System.out.println("el precio CON descuento del producto es: " + producto1.calcularDescuento());
 
 		
 		System.out.println("-------------------------------------------------");
