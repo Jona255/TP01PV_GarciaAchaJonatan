@@ -1,7 +1,10 @@
 package ar.edu.unju.fi.ejercicio12.main;
 
 import java.text.SimpleDateFormat;
+
 import java.util.Calendar;
+
+import ar.edu.unju.fi.ejercicio12.model.Persona;
 
 public class Main {
 
@@ -26,12 +29,21 @@ public class Main {
 		Calendar hoy = Calendar.getInstance();
 		Calendar fecha2 = Calendar.getInstance();
 		
+		System.out.println("---------------");
+//		fecha2.set(1994, 10, 4);
+//		
+//		System.out.println(hoy.getTimeInMillis());
+//		System.out.println(fecha2.getTimeInMillis()+ "   fecha cumpleaños");
+//		System.out.println((hoy.getTimeInMillis()-fecha2.getTimeInMillis())/1000/60/60/24/365);
 		
-		fecha2.set(1994, 3, 2);
+		fecha2.set(1994, 9, 11);
+		Persona persona = new Persona("MARTA",fecha2);
 		
-		System.out.println(hoy.getTimeInMillis());
-		System.out.println(fecha2.getTimeInMillis()+ "   fecha cumpleaños");
-		System.out.println((hoy.getTimeInMillis()-fecha2.getTimeInMillis())/1000/60/60/24/365);
+		System.out.println("EL nombre es: "+persona.getNombre());
+		System.out.println("Fecha de Nacimiento es: "+sdf.format(persona.getFechaNacimiento().getTime()));
+		System.out.println("La edad es: "+persona.obtenerEdad(fecha2));
+		System.out.println("El signo Zodiacal es: "+persona.obtenerSignoZodiacal(fecha2));
+		System.out.println("El signo Zodiacal es: "+persona.obtenerSignoZodiacal(fecha2));
 		
 		
 		
