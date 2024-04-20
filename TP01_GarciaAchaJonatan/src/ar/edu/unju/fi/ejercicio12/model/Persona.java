@@ -13,6 +13,7 @@ public class Persona {
 		this.nombre =nombre;
 		this.fechaNacimiento= fecha;
 		
+		
 //		corregirMes(fecha);
 		// TODO Auto-generated constructor stub
 	}
@@ -72,13 +73,14 @@ public class Persona {
 //		System.out.println("el año es: "+ yearFormat.format(fecha.getTime()));
 		
 		int dia = Integer.parseInt(dayFormat.format(fecha.getTime()));
-		int mes = Integer.parseInt(monthFormat.format(fecha.getTime()));
+//		int mes = Integer.parseInt(monthFormat.format(fecha.getTime()));
+		int mes = fecha.get(Calendar.MONTH);
 		
 //		System.out.println(fecha.getTime());
 //		System.out.println(dia);
 //		System.out.println(mes);
-		switch (mes-1) {
-			case 0: {
+		switch (mes) {
+			case 1: {
 				if( dia>= 1 && dia<=19) {
 					signo= " Capricornio";
 				}else if(dia>=20 && dia<=31) {
@@ -86,7 +88,7 @@ public class Persona {
 				}
 				break;
 			}
-			case 1: {
+			case 2: {
 				if(dia>=1 && dia<=18) {
 					signo= " Acuario";
 				}else if(dia>=19 && dia<=31) {
@@ -94,7 +96,7 @@ public class Persona {
 				}
 				break;
 			}
-			case 2: {
+			case 3: {
 				if(dia>=1 && dia<=20) {
 					signo= " Piscis";
 				}else if(dia>=21 && dia<=31) {
@@ -102,7 +104,7 @@ public class Persona {
 				}
 				break;
 			}
-			case 3: {
+			case 4: {
 				if(dia>=1 && dia<=19) {
 					signo= " Aries";
 				}else if(dia>=20 && dia<=31) {
@@ -110,7 +112,7 @@ public class Persona {
 				}
 				break;
 			}
-			case 4: {
+			case 5: {
 				if(dia>=1 && dia<=20) {
 					signo= " Tauro";
 				}else if(dia>=21 && dia<=31) {
@@ -118,7 +120,7 @@ public class Persona {
 				}
 				break;
 			}
-			case 5: {
+			case 6: {
 				if(dia>=1 && dia<=20) {
 					signo= " Geminis";
 				}else if(dia>=21 && dia<=31) {
@@ -126,7 +128,7 @@ public class Persona {
 				}
 				break;
 			}
-			case 6: {
+			case 7: {
 				if(dia>=1 && dia<=22) {
 					signo= " Cancer";
 				}else if(dia>=23 && dia<=31) {
@@ -134,7 +136,7 @@ public class Persona {
 				}
 				break;
 			}
-			case 7: {
+			case 8: {
 				if(dia>=1 && dia<=22) {
 					signo= " Leo";
 				}else if(dia>=23 && dia<=31) {
@@ -142,7 +144,7 @@ public class Persona {
 				}
 				break;
 			}
-			case 8: {
+			case 9: {
 				if(dia>=1 && dia<=22) {
 					signo= " VIrgo";
 				}else if(dia>=23 && dia<=31) {
@@ -150,7 +152,7 @@ public class Persona {
 				}
 				break;
 			}
-			case 9: {
+			case 10: {
 				if(dia>=1 && dia<=22) {
 					signo= " Libra";
 				}else if(dia>=23 && dia<=31) {
@@ -158,7 +160,7 @@ public class Persona {
 				}
 				break;
 			}
-			case 10: {
+			case 11: {
 				if(dia>=1 && dia<=21) {
 					signo= " Escorpio";
 				}else if(dia>=22 && dia<=31) {
@@ -166,7 +168,7 @@ public class Persona {
 				}
 				break;
 			}
-			case 11: {
+			case 12: {
 				if(dia>=1 && dia<=21) {
 					signo= " Sagitario";
 				}else if(dia>=22 && dia<=31) {
@@ -185,7 +187,7 @@ public class Persona {
 	}
 
 	public String mostrarFechaNacimiento() {
-		return	""; 
+		return	"Fecha de Nacimiento: "+this.fechaNacimiento.get(Calendar.DAY_OF_MONTH)+"/"+this.fechaNacimiento.get(Calendar.MONTH)+"/"+this.fechaNacimiento.get(Calendar.YEAR); 
 	}
 	
 	public String getNombre() {

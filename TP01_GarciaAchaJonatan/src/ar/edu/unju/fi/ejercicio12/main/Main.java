@@ -14,7 +14,6 @@ public class Main {
 		Calendar fechaNacimiento = Calendar.getInstance();
 		Scanner scan = new Scanner(System.in);
 		String nombre;
-		String fecha;
 		
 		
 		
@@ -22,9 +21,9 @@ public class Main {
 		int dia,mes,anio;
 //		System.out.println(calendario.getTime().toLocaleString());  //deprecadisimo
 		
-		SimpleDateFormat sdf =new SimpleDateFormat("yyyy-MM-dd");
-		SimpleDateFormat formatoSalida =new SimpleDateFormat("dd/MM/yyyy");
-		
+//		SimpleDateFormat sdf =new SimpleDateFormat("yyyy-MM-dd");
+//		SimpleDateFormat formatoSalida =new SimpleDateFormat("dd/MM/yyyy");
+//		
 //		System.out.println(sdf.format(calendario.getTime()));
 //		
 //		calendario.set(2000, 8, 30);
@@ -60,9 +59,11 @@ public class Main {
 		System.out.println("----------------Los datos de la personas son--------------");
 		Persona persona = new Persona(nombre, fechaNacimiento );
 		
-		System.out.println("EL nombre es: "+persona.getNombre());
-		System.out.println("Fecha de Nacimiento es: "+formatoSalida.format(persona.getFechaNacimiento().getTime()));
+//		System.out.println("Fecha de Nacimiento es: "+formatoSalida.format(persona.getFechaNacimiento().getTime()));
 //		System.out.println("Fecha de Nacimiento es: "+persona.mostrarFechaNacimiento());
+		
+		System.out.println("EL nombre es: "+persona.getNombre());
+		System.out.println(persona.mostrarFechaNacimiento());
 		System.out.println("La edad es: "+persona.obtenerEdad(fechaNacimiento));
 		System.out.println("El signo Zodiacal es: "+persona.obtenerSignoZodiacal(fechaNacimiento));
 		System.out.println("La estacion es: "+persona.obtenerEstacion());
