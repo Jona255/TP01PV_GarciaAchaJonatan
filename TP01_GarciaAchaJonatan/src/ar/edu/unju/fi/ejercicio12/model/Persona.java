@@ -1,39 +1,66 @@
 package ar.edu.unju.fi.ejercicio12.model;
 
 import java.text.SimpleDateFormat;
+import java.time.Month;
 import java.util.Calendar;
 
 public class Persona {
 	private String nombre;
-	private static Calendar fechaNacimiento;
+	private  Calendar fechaNacimiento;
 
 	public Persona(String nombre, Calendar fecha) {
 		super();
 		this.nombre =nombre;
 		this.fechaNacimiento= fecha;
+		
+//		corregirMes(fecha);
 		// TODO Auto-generated constructor stub
 	}
 
-	public static long obtenerEdad(Calendar fecha) {
+	public long obtenerEdad(Calendar fecha) {
 		Calendar hoy = Calendar.getInstance();
-		return (hoy.getTimeInMillis() - fecha.getTimeInMillis()) / 1000 / 60 / 60 / 24/365;
+		return (hoy.getTimeInMillis() - this.fechaNacimiento.getTimeInMillis()) / 1000 / 60 / 60 / 24/365;
 	}
 
 	
 	public String obtenerEstacion() {
-//		SimpleDateFormat monthFormat =new SimpleDateFormat("M");
-//		SimpleDateFormat dayFormat =new SimpleDateFormat("d");
+		SimpleDateFormat monthFormat =new SimpleDateFormat("M");
+		SimpleDateFormat dayFormat =new SimpleDateFormat("d");
 //		
+		int dia= Integer.parseInt(dayFormat.format(this.fechaNacimiento.getTime()));
 //		switch (Integer.parseInt(monthFormat.format(this.fechaNacimiento.getTime()))) {
-//		case 1: {
-//			
-//			return ;
-//		}
-//		default:
-//			throw new IllegalArgumentException("Unexpected value: " + key);
-//		}
-		return "";
+	        String estacion ;
+	        switch(Integer.parseInt(monthFormat.format(this.fechaNacimiento.getTime()))){
+	            case 0: case 1:
+	                estacion = "Verano";
+	                break;
+	            case 2:
+	                estacion = (dia<20)?"Verano":"Otoño";
+	                break;
+	            case 3: case 4:
+	                estacion = "Otoño";
+	                break;
+	            case 5:
+	                estacion = (dia<20)?"Otoño":"Invierno";
+	                break;
+	            case 6: case 7:
+	                estacion = "Invierno";
+	                break;
+	            case 8:
+	                estacion = (dia<20)?"Invierno":"Primavera";
+	                break;
+	            case 9: case 10:
+	                estacion = "Primavera";
+	                break;
+	            case 11:
+	                estacion = (dia<20)?"Primavera":"Verano";
+	                break;
+	            default:
+	                estacion = "Estacion desconocida";
+	        }
+	        return estacion;    
 	}
+	
 	public String obtenerSignoZodiacal(Calendar fecha) {
 		SimpleDateFormat yearFormat =new SimpleDateFormat("yyyy");
 		SimpleDateFormat monthFormat =new SimpleDateFormat("M");
@@ -46,6 +73,10 @@ public class Persona {
 		
 		int dia = Integer.parseInt(dayFormat.format(fecha.getTime()));
 		int mes = Integer.parseInt(monthFormat.format(fecha.getTime()));
+		
+//		System.out.println(fecha.getTime());
+//		System.out.println(dia);
+//		System.out.println(mes);
 		switch (mes-1) {
 			case 0: {
 				if( dia>= 1 && dia<=19) {
@@ -153,7 +184,9 @@ public class Persona {
 		
 	}
 
-	
+	public String mostrarFechaNacimiento() {
+		return	""; 
+	}
 	
 	public String getNombre() {
 		return nombre;
@@ -163,13 +196,11 @@ public class Persona {
 		this.nombre = nombre;
 	}
 
-	public static Calendar getFechaNacimiento() {
+	public  Calendar getFechaNacimiento() {
 		return fechaNacimiento;
 	}
 
-	public static void setFechaNacimiento(Calendar fechaNacimiento) {
-		Persona.fechaNacimiento = fechaNacimiento;
-	}
+
 
 	
 }
