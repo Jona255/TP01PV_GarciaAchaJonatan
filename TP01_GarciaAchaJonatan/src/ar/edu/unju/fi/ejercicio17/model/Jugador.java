@@ -1,48 +1,64 @@
 package ar.edu.unju.fi.ejercicio17.model;
 
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.time.temporal.ChronoUnit;
 import java.util.Calendar;
 
 public class Jugador {
 	private String nombre;
 	private String apellido;
 	private Calendar fechaNacimiento;
+	private LocalDate fecha;
 	private String nacionalidad;
 	private float altura;
 	private float peso;
 	private String posicion;
 	
 	
-	public Jugador(String nombre, String apellido, Calendar fechaNacimiento, String nacionalidad, float altura,
+	public Jugador(String nombre, String apellido, String nacionalidad, float altura, LocalDate fecha,
 			float peso, String posicion) {
 		super();
 		this.nombre = nombre;
 		this.apellido = apellido;
-		this.fechaNacimiento = fechaNacimiento;
+//		this.fechaNacimiento = fechaNacimiento;
 		this.nacionalidad = nacionalidad;
 		this.altura = altura;
 		this.peso = peso;
 		this.posicion = posicion;
+		this.fecha = fecha;
 	}
 	
-	public int obtenerEdad(Calendar fecha) {	
-		return (int) ((Calendar.getInstance().getTimeInMillis()-fecha.getTimeInMillis())/1000/60/60/24/365);
+	public int obtenerEdad() {	
+		return (int) ChronoUnit.YEARS.between(this.fecha, LocalDate.now());
 	}
 	
 	
 	
 	@Override
 	public String toString() {
+		DateTimeFormatter formateador = DateTimeFormatter.ofPattern("dd-MM-yyyy");
 		SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
 		System.out.println("Nombre: "+this.nombre);
 		System.out.println("Apellido: "+this.apellido);
-		System.out.println("Fecha de Nacimiento: "+sdf.format(this.fechaNacimiento.getTime()));
-		System.out.println("Edad: "+obtenerEdad(this.fechaNacimiento));
+		System.out.println("Fecha de Nacimiento: "+ formateador.format(this.fecha));
+		System.out.println("Edad: "+obtenerEdad());
 		System.out.println("Nacionalidad: "+this.nacionalidad);
 		System.out.println("Altura: "+this.altura);
 		System.out.println("Peso: "+this.peso);
 		System.out.println("Posicion: "+this.posicion);
 		return super.toString();
+	}
+
+	
+	
+	public LocalDate getFecha() {
+		return fecha;
+	}
+
+	public void setFecha(LocalDate fecha) {
+		this.fecha = fecha;
 	}
 
 	public String getNombre() {
