@@ -11,6 +11,13 @@ public class Pais {
 	}
 	
 	
+	@Override
+	public String toString() {
+		System.out.println("Nombre Pais: " + this.nombre + " - Codigo: " + this.codigo);
+	return super.toString();
+	}
+
+
 	public int getCodigo() {
 		return codigo;
 	}

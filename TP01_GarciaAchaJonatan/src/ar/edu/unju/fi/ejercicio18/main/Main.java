@@ -16,11 +16,21 @@ import ar.edu.unju.fi.ejercicio18.model.Pais;
 public class Main {
 
 	public static void main(String[] args) {
-		
+
 		int opc = 0;
 		Scanner scan = new Scanner(System.in);
-		List<DestinoTuristico> destinoTuristicos= new ArrayList<DestinoTuristico>();
-		DateTimeFormatter formateadorFecha = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+		List<DestinoTuristico> destinosTuristicos = new ArrayList<DestinoTuristico>();
+		List<Pais> paises = new ArrayList<Pais>();
+
+		Pais pais1 = new Pais(1, "argentina");
+		Pais pais2 = new Pais(2, "chile");
+		Pais pais3 = new Pais(3, "brasil");
+		Pais pais4 = new Pais(4, "uruguay");
+
+		paises.add(pais1);
+		paises.add(pais2);
+		paises.add(pais3);
+		paises.add(pais4);
 
 		do {
 			System.out.println("---------MENU------------");
@@ -41,151 +51,138 @@ public class Main {
 
 			switch (opc) {
 			case 1:
-				String nombre;
+				String nombrePais, nombreDestino;
 				float precio;
-				int codigo, cantDias;
+				int codigoPais, codigoDestino, cantDias;
 				Pais pais;
+
 				
-				Calendar fechaCalendar = Calendar.getInstance();
+				
+				System.out.println("Codigo: 1 - Nombre argentina");
+				System.out.println("Codigo: 2 - Nombre chile: ");
+				System.out.println("Codigo: 3 - Nombre brasil: ");
+				System.out.println("Codigo: 4 - Nombre uruguay: ");
+				System.out.println("-------------");
+				System.out.println("Ingresa Codigo del Pais: ");
+				codigoPais = scan.nextInt();
+				System.out.println("Ingresa Nombre del Pais: ");
+				nombrePais = scan.next();
+				
+				for (Pais p: paises) {
+					if (codigoPais == p.getCodigo() && nombrePais.equals(nombrePais)) {
+						pais = new Pais(codigoPais, nombrePais);						
+						System.out.println("Ingresa Codigo del Destino: ");
+						codigoDestino = scan.nextInt();
+						System.out.println("Ingresa Nombre del Destino: ");
+						nombreDestino = scan.next();
+						
+						System.out.println("Ingrese Precio: ");
+						precio = scan.nextFloat();
+						System.out.println("Ingrese Cantidad de dias: ");
+						cantDias = scan.nextInt();
+						
+						destinosTuristicos.add(new DestinoTuristico(codigoDestino, nombreDestino, precio, pais, cantDias));
+					}else{
+					}
+					
+				}
 
-				System.out.println("Ingresa Nombre: ");
-				nombre = scan.next();
-				System.out.println("Ingresa Apellido: ");
-				apellido = scan.next();
-				System.out.println("Ingresa Nacionalidad: ");
-				nacionalidad = scan.next();
-				System.out.println("Ingresa Posicion (delantero, medio, defensa, arquero): ");
-				posicion = scan.next();
-				System.out.println("Ingresa Fecha de Nacimiento (dd-MM-aaaa): ");
-				fechaNacimiento = scan.next();
-				altura = 123;
-
-				LocalDate fechaNac = LocalDate.parse(fechaNacimiento, formateadorFecha);
-
-				System.out.println("Ingresa Altura: ");
-				altura = scan.nextFloat();
-				System.out.println("Ingresa Peso: ");
-				peso = scan.nextFloat();
-
-				// DATOS PARA TESTEAR
-//				Jugador jugador1 = new Jugador("Jose", "Quiroga", "Argentina", altura, fechaNac, peso, posicion);
-//				Jugador jugador2 = new Jugador("Ricardo", "Tolaba", "Española", altura, fechaNac, peso, posicion);
-//				Jugador jugador3 = new Jugador("Federico", "Puca", "Venezolano", altura, fechaNac, peso, posicion);
-//				Jugador jugador4 = new Jugador("Cristina", "Milei", "Estadounidense", altura, fechaNac, peso, posicion);
-//				Jugador jugador5 = new Jugador("Javier", "Kirchner", "Argentina", altura, fechaNac, peso, posicion);
-
-				jugadores1.add(new Jugador(nombre, apellido, nacionalidad, altura, fechaNac, peso, posicion));
-//				jugadores1.add(jugador1);
-//				jugadores1.add(jugador2);
-//				jugadores1.add(jugador3);
-//				jugadores1.add(jugador4);
-//				jugadores1.add(jugador5);
 
 				break;
 			case 2:
 				System.out.println("<<<<<<<<<<<<<<<<<<<<<<<>>>>>>>>>>>>>>>>>>>>>>>>");
-				System.out.println("Ingrese nombre del jugador: ");
-				nombre = scan.next();
-				System.out.println("Ingrese apellido del jugador: ");
-				apellido = scan.next();
-
-				for (Jugador jugador : jugadores1) {
-					if (jugador.getApellido().equals(apellido) && jugador.getNombre().equals(nombre)) {
-						jugador.toString();
-					}
+				for (DestinoTuristico dt : destinosTuristicos) {
+					dt.toString();
+					System.out.println("\\\\\\\\\\\\\\\\\\\\\\///////////////////");
 				}
 				System.out.println("<<<<<<<<<<<<<<<<<<<<<<<>>>>>>>>>>>>>>>>>>>>>>>>");
 				break;
-				
-				
 			case 3:
+
 				System.out.println("<<<<<<<<<<<<<<<<<<<<<<<>>>>>>>>>>>>>>>>>>>>>>>>");
-				List<Jugador> aux = new ArrayList<>();
-				aux = jugadores1;
-				aux.sort(Comparator.comparing(Jugador::getApellido));
-				for (Jugador jugador : aux) {
-					System.out.println(jugador.getApellido() + " " + jugador.getNombre());
+				System.out.println("Ingrese nombre del destino turistico: ");
+				nombreDestino = scan.next();
+				System.out.println("Ingrese nombre nuevo del pais: ");
+				nombrePais = scan.next();
+				System.out.println("Ingrese codigo nuevo del pais: ");
+				codigoPais = scan.nextInt();
 
-				}
-				System.out.println("<<<<<<<<<<<<<<<<<<<<<<<>>>>>>>>>>>>>>>>>>>>>>>>");
-				break;
-				
-				
-			case 4:
-				System.out.println("<<<<<<<<<<<<<<<<<<<<<<<>>>>>>>>>>>>>>>>>>>>>>>>");
-				System.out.println("Ingrese nombre del jugador: ");
-				nombre = scan.next();
-				System.out.println("Ingrese apellido del jugador: ");
-				apellido = scan.next();
-
-//				String nombre2, apellido2, nacionalidad2, posicion2;
-//				float peso2, altura2;
-
-				for (int i = 1; i <= jugadores1.size(); i++) {
-					if (jugadores1.get(i).getNombre().equals(nombre)
-							&& jugadores1.get(i).getApellido().equals(apellido)) {
-						
-						System.out.println("Ingresa Nuevo Nombre: ");
-						jugadores1.get(i).setNombre(scan.next());
-						System.out.println("Ingresa Nuevo Apellido: ");
-						jugadores1.get(i).setApellido(scan.next());
-						System.out.println("Ingresa Nueva Nacionalidad: ");
-						jugadores1.get(i).setNacionalidad(scan.next());
-						System.out.println("Ingresa Nueva Posicion (delantero, medio, defensa, arquero): ");
-						jugadores1.get(i).setPosicion(scan.next());
-
-						System.out.println("Ingresa Nueva Fecha de nacimiento---- ");
-						fechaNacimiento = scan.next();
-						LocalDate fechaNac1 = LocalDate.parse(fechaNacimiento, formateadorFecha);
-						jugadores1.get(i).setFecha(fechaNac1);
-
-						System.out.println("Ingresa Nueva Altura: ");
-						jugadores1.get(i).setAltura(scan.nextFloat());
-						
-						System.out.println("Ingresa Nuevo Peso: ");
-						jugadores1.get(i).setPeso(scan.nextFloat());
+				for (int i = 1; i <= destinosTuristicos.size(); i++) {
+					if (destinosTuristicos.get(i).getNombre().equals(nombreDestino)) {
+						destinosTuristicos.get(i).getPais().setNombre(nombrePais);
+						destinosTuristicos.get(i).getPais().setCodigo(codigoPais);
+					} else {
+						System.out.println("NOMBRE DE DESTINO INCORRECTO");
+						break;
 					}
 				}
 
 				System.out.println("<<<<<<<<<<<<<<<<<<<<<<<>>>>>>>>>>>>>>>>>>>>>>>>");
 				System.out.println("<<<<<<<<<<<<<<<<<<<<<<<>>>>>>>>>>>>>>>>>>>>>>>>");
 				break;
+
+			case 4:
+
+				System.out.println("<<<<<<<<<<<<<<<<<<<<<<<>>>>>>>>>>>>>>>>>>>>>>>>");
+				System.out.println("ELIMINANDO TODOS LOS DESTINOS TURISTICOS");
+
+				destinosTuristicos = new ArrayList<DestinoTuristico>();
+				break;
+
 			case 5:
 				System.out.println("<<<<<<<<<<<<<<<<<<<<<<<>>>>>>>>>>>>>>>>>>>>>>>>");
-				System.out.println("Ingrese nombre del jugador a ELIMINAR: ");
-				nombre = scan.next();
-				System.out.println("Ingrese apellido del jugador a ELIMINAR: ");
-				apellido = scan.next();
+				System.out.println("Ingrese nombre del destino a ELIMINAR: ");
+				nombreDestino = scan.next();
 
-				Iterator iterator = jugadores1.iterator();
+				Iterator<DestinoTuristico> iterator = destinosTuristicos.iterator();
 				while (iterator.hasNext()) {
-					Jugador j = (Jugador) iterator.next();
-					if (j.getNombre().equals(nombre) && j.getApellido().equals(apellido)) {
+					DestinoTuristico destino = (DestinoTuristico) iterator.next();
+					if (destino.getNombre().equals(nombreDestino)) {
 						iterator.remove();
-						System.out.println("JUGADOR ELIMINADO CORRECTAMENTE");
+						System.out.println("DESTINO ELIMINADO CORRECTAMENTE");
 					} else {
-						System.out.println("JUGADOR NO EXISTE - VUELVA A INTENTAR MAS TARDE");
+						System.out.println("DESTINO NO EXISTE - VUELVA A INTENTAR MAS TARDE");
 					}
 
 				}
 
+				System.out.println("<<<<<<<<<<<<<<<<<<<<<<<>>>>>>>>>>>>>>>>>>>>>>>>");
 				break;
+
 			case 6:
-				System.out.println("La cantidad de jugadores es: " + jugadores1.size());
-				break;
-			case 7:
-				System.out.println("Ingrese Nacionalidad:");
-				nacionalidad = scan.next();
-				int cant = 0;
-				for (Jugador jugador : jugadores1) {
-					if (jugador.getNacionalidad() == "Argentina") {
-						cant++;
-					}
+
+				System.out.println("<<<<<<<<<<<<<<<<<<<<<<<>>>>>>>>>>>>>>>>>>>>>>>>");
+				List<DestinoTuristico> aux = new ArrayList<DestinoTuristico>();
+				aux = destinosTuristicos;
+				aux.sort(Comparator.comparing(DestinoTuristico::getNombre));
+				for (DestinoTuristico dt : aux) {
+					System.out.println(dt.toString());
 				}
-				System.out.println("La cantidad de jugadores es: " + cant);
+				System.out.println("<<<<<<<<<<<<<<<<<<<<<<<>>>>>>>>>>>>>>>>>>>>>>>>");
+				break;
+
+			case 7:
+				System.out.println("<<<<<<<<<<<<<<<<<<<<<<<>>>>>>>>>>>>>>>>>>>>>>>>");
+				for (DestinoTuristico dt : destinosTuristicos) {
+					dt.getPais().toString();
+					System.out.println("\\\\\\\\\\\\\\\\\\\\\\///////////////////");
+				}
+				System.out.println("<<<<<<<<<<<<<<<<<<<<<<<>>>>>>>>>>>>>>>>>>>>>>>>");
 				break;
 			case 8:
-				System.out.println("FIN DEL PROGRAMA");
+
+				System.out.println("<<<<<<<<<<<<<<<<<<<<<<<>>>>>>>>>>>>>>>>>>>>>>>>");
+				System.out.println("Ingrese codigo de pais: ");
+				codigoPais = scan.nextInt();
+				for (Pais p: paises) {
+					if (codigoPais== p.getCodigo() ) {
+						for (DestinoTuristico dt: destinosTuristicos) {							
+							dt.toString();
+						}
+					}
+					System.out.println("\\\\\\\\\\\\\\\\\\\\\\///////////////////");
+				}
+				System.out.println("<<<<<<<<<<<<<<<<<<<<<<<>>>>>>>>>>>>>>>>>>>>>>>>");
 				break;
 
 			default:
@@ -193,7 +190,7 @@ public class Main {
 				break;
 			}
 		} while (opc != 8);
-		
+
 	}
 
 }
